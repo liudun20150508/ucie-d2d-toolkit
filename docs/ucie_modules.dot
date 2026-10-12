@@ -1,0 +1,56 @@
+// ucie_d2d_top 模块连接图（依据 rtl/top/ucie_d2d_top.sv 与 rtl/link、rtl/phy 实测例化关系）
+// 渲染：dot -Tsvg docs/ucie_modules.dot -o docs/ucie_modules.svg
+digraph ucie_modules {
+  rankdir=TB;
+  node [fontname="Helvetica", fontsize=11, shape=box, style="rounded,filled", fillcolor="#eef3fb", color="#3366aa"];
+  edge [color="#557799", arrowsize=0.8];
+
+  // 顶层
+  top [label="ucie_d2d_top\n(顶层 / rtl/top)", shape=box, style="rounded,filled,bold", fillcolor="#d6e4f7"];
+
+  // 协议层
+  proto [label="协议层 (rtl/proto)\nucie_axi_slv_bridge / ucie_axi_mst_bridge\nucie_stream_pack / unpack", fillcolor="#eaf6ec", color="#3a8a44"];
+
+  // 数据链路层
+  dll_a [label="ucie_dll ×2\n(链路层, rtl/link)", fillcolor="#fdf3e3", color="#b0781f"];
+  flit_tx [label="ucie_flit_tx\n68B flit 组装"];
+  flit_rx [label="ucie_flit_rx\n68B flit 解析"];
+  retry  [label="ucie_link_retry\n重传窗口"];
+  crc16  [label="ucie_crc16\nCRC-16 (0x29B1)"];
+
+  // 物理层
+  pipe [label="ucie_link_pipe ×2\n(物理层, rtl/phy)", fillcolor="#fdf3e3", color="#b0781f"];
+  afifo [label="ucie_afifo\nCDC 异步 FIFO"];
+  deskew [label="ucie_deskew\nlane 偏斜对齐"];
+  rdi_tx [label="ucie_rdi_tx\n字节 → 16 lane"];
+  rdi_rx [label="ucie_rdi_rx\n16 lane → 字节"];
+
+  ltssm [label="ucie_ltssm\n链路训练状态机(10态)"];
+  lane_repair [label="ucie_lane_repair\n坏 lane 修复"];
+  mgmt [label="ucie_mgmt\n管理通道"];
+
+  // 顶层 -> 各层
+  top -> proto [label="AXI4"];
+  top -> dll_a [label="×2 (a2b/b2a)"];
+  top -> pipe [label="×2"];
+  top -> ltssm;
+  top -> lane_repair;
+  top -> mgmt;
+
+  // 链路层内部
+  dll_a -> flit_tx;
+  dll_a -> flit_rx;
+  dll_a -> retry;
+  flit_tx -> crc16;
+  flit_rx -> crc16;
+
+  // 物理层内部
+  pipe -> afifo;
+  pipe -> deskew;
+  pipe -> rdi_tx;
+  pipe -> rdi_rx;
+
+  // 跨层数据流
+  proto -> dll_a [label="64B payload", style=dashed];
+  dll_a -> pipe [label="68B flit", style=dashed];
+}

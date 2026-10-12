@@ -55,3 +55,16 @@ make sdf          # SKY130 APR -> write_sdf -> Icarus $sdf_annotate 时序后仿
 
 - 结论要有证据：命令 + 输出片段（见各 `docs/*.md` 的修正记录与 `results/` 产物）。
 - 涉及"不支持"的表述，先区分是**开源工具的固有边界**还是**没找到用法**，别外推。
+
+## 智能体接入（Claude Code / Reasonix / OpenClaw 等）
+
+- **Claude Code**：把本仓库放进去，`SKILL.md` 的 YAML 头（`name` + `description`）
+  会被当作 skill 识别；正文+`knowledge/` 就是可检索的知识库。
+- **Reasonix / OpenClaw 等通用智能体**：不认 `SKILL.md` 的 YAML 头，但 `docs/`、
+  `knowledge/INDEX.md`、`README.md` 都是**纯文本/markdown**，可直接喂进知识库或
+  RAG，无需改造。`make` 目标与脚本是普通 shell，任何能执行 shell 的智能体都能跑。
+- **要不要写 MCP？** 只有当需要一个**独立常驻服务**（例如把 "跑 DFT 流程" 包成
+  远程/后台工具给多会话调用）时才值得。本项目是**仓库内一次性可复现方法**，
+  skill + 知识库已经够用，**MCP 属过度设计**。若确实需要，最小做法是把
+  `flow/*.sh` 的入口包成一个 MCP tool（stdio：接收 `tool=xx` 参数 → 调对应脚本 →
+  返回日志），约 50 行；不建议为此加依赖。
