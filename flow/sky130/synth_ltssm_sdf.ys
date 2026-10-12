@@ -1,0 +1,26 @@
+# ============================================================
+# SYN: ucie_ltssm（SDF 时序仿真自检靶子）-> SKY130
+# ------------------------------------------------------------
+# 复刻 synth_ucie_sky130.ys 的路线，只改 top 名与产物路径。
+# 用途：给 SDF 时序仿真链做"先小后大"的最小自检目标。
+# 路线不变：不用 abc -liberty（SKY130 卡 liberty->scl），
+# 用 synth 布尔优化 + sky130_map.v 工艺映射 + dfflibmap 映射 FF。
+# ============================================================
+
+read_liberty -lib resources/sky130/sky130_fd_sc_hd__tt_025C_1v80.partial.lib
+read_verilog build/sdf/ucie_ltssm_sv2v.v
+
+synth -top ucie_ltssm -flatten
+
+async2sync
+opt
+
+dfflibmap -liberty resources/sky130/sky130_fd_sc_hd__tt_025C_1v80.partial.lib
+techmap -map flow/sky130/sky130_map.v
+
+# 把综合遗留的裸常数 1'b0/1'b1 映射到 conb_1 的 LO/HI 引脚，
+# 否则 OpenROAD link_design 认不出 1'h0 这类常数连接。
+hilomap -hicell sky130_fd_sc_hd__conb_1 HI -locell sky130_fd_sc_hd__conb_1 LO
+
+write_verilog -noattr build/sdf/ucie_ltssm_sky130.v
+tee -o build/sdf/ltssm_area.txt stat -liberty resources/sky130/sky130_fd_sc_hd__tt_025C_1v80.partial.lib

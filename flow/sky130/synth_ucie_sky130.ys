@@ -1,0 +1,31 @@
+# ============================================================
+# SYN: UCIe D2D 链路 -> SKY130（真工艺，可流片 PDK）
+# ------------------------------------------------------------
+# 路线照搬前项目 picorv32 的 SKY130 综合脚本（flow/sky130/synth.ys），
+# 只改：顶层名 picorv32 -> ucie_d2d_top、路径指向本 demo 的 pdks/。
+# 关键：不用 `abc -liberty`（SKY130 在这条链路上会卡 liberty->scl 转换，
+# 见 flow/Makefile 顶部注释），而是 `synth` 做布尔优化 + 手写 sky130_map.v
+# 做工艺映射 + dfflibmap 映射时序单元。
+#
+# 注意（继承自前项目）：techmap-to-sky130 之后不要再跑 clean/opt，
+# yosys 的 clean 会误删 techmap 生成实例的 liberty 输出端口（前项目实测
+# 111 根悬空线）。synth 内部的 clean 是安全的。
+# ============================================================
+
+read_liberty -lib resources/sky130/sky130_fd_sc_hd__tt_025C_1v80.partial.lib
+read_verilog build/syn/ucie_d2d_top_sv2v.v
+
+synth -top ucie_d2d_top -flatten
+
+# 本 demo RTL 全部用异步低有效复位（always_ff @(posedge clk or negedge rst_n)），
+# synth 后变成 $_DFF_PN0_ 这类异步复位 FF，dfflibmap 的 dfflegalize 不接受。
+# async2sync 把它们转成同步复位形式（$_DFF_P_ + 复位门控），与 flow/Makefile
+# 的 Nangate 路线一致。这一步在 techmap 之前，安全。
+async2sync
+opt
+
+dfflibmap -liberty resources/sky130/sky130_fd_sc_hd__tt_025C_1v80.partial.lib
+techmap -map flow/sky130/sky130_map.v
+
+write_verilog -noattr build/syn/ucie_d2d_top_sky130.v
+tee -o build/syn/sky130_area.txt stat -liberty resources/sky130/sky130_fd_sc_hd__tt_025C_1v80.partial.lib

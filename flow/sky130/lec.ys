@@ -1,0 +1,15 @@
+# LEC: reference (gold) vs implementation (gate), sky130 cell models
+# reverse_map.v = hand-written flop/clkbuf semantics
+# reverse_map_auto.v = auto-generated $lut models for all 347 combinational cells
+read_liberty -lib ../../resources/sky130/sky130_fd_sc_hd__tt_025C_1v80.partial.lib
+read_verilog /tmp/gold.v
+proc
+read_verilog /tmp/gate.v
+techmap -map reverse_map.v
+techmap -map reverse_map_auto.v
+equiv_make gold gate equiv
+# RTL contains don't-care X assigns (WITH_PCPI/COMPRESSED_ISA not enabled);
+# -undef models undef states so gate's concrete mapping of X is accepted
+equiv_simple -undef -seq 4 equiv
+equiv_induct -seq 4 equiv
+equiv_status -assert

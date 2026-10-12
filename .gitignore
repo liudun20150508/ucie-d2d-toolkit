@@ -1,0 +1,13 @@
+# 构建产物（由 make 生成，不纳入版本控制）——仅仓库根目录
+/build/
+/obj_dir/
+/waves/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 编辑器 / 系统
+.DS_Store
+*.swp
+*~

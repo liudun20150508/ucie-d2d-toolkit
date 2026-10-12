@@ -1,0 +1,579 @@
+OpenSTA 3.1.0 GITDIR-NOT Copyright (c) 2026, Parallax Software, Inc.
+License GPLv3: GNU GPL version 3 <http://gnu.org/licenses/gpl.html>
+
+This is free software, and you are free to change and redistribute it
+under certain conditions; type `show_copying' for details. 
+This program comes with ABSOLUTELY NO WARRANTY; for details type `show_warranty'.
+== 读入工艺库：<home>/Desktop/backend/vortex/hw/syn/libs/NangateOpenCellLibrary_typical.lib
+== 读入门级网表：../build/syn/ucie_d2d_top_sta.v
+== 链接设计：ucie_d2d_top
+== 读入约束：ucie.sdc
+Warning 441: ucie.sdc line 27, set_input_delay relative to a clock defined on the same port/pin not allowed.
+
+==================== 签核结果 ====================
+-- 最差建立时序（WNS / TNS）
+worst slack max -71.25
+tns max -240878.42
+
+-- 最差保持时序
+worst slack min -0.04
+
+-- 违例路径数（建立）
+max_delay/setup group path delay
+
+                                     Required   Actual
+Endpoint                                Delay    Delay    Slack
+---------------------------------------------------------------
+u_pipe_a2b/u_deskew/_09320_/A1 (OAI22_X1)   40.000   80.776  -40.776 (VIOLATED)
+
+max_delay/setup group lclk
+
+                                     Required   Actual
+Endpoint                                Delay    Delay    Slack
+---------------------------------------------------------------
+u_dll_a/u_retry/_27467_/D (DFF_X1)      9.810   24.124  -14.314 (VIOLATED)
+
+max_delay/setup group rdi_clk
+
+                                     Required   Actual
+Endpoint                                Delay    Delay    Slack
+---------------------------------------------------------------
+u_pipe_a2b/u_rdi_rx/_44419_/D (DFF_X1)    7.313   78.568  -71.255 (VIOLATED)
+
+
+-- 最差 3 条建立路径明细
+Warning 503: sta.tcl line 1, report_checks -group_count is deprecated. Use -group_path_count instead.
+Startpoint: reversal_detect (input port clocked by lclk)
+Endpoint: u_pipe_a2b/u_deskew/_09320_/A1 (internal path endpoint)
+Path Group: path delay
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   2.000    2.000 ^ input external delay
+   0.000    2.000 ^ reversal_detect (in)
+   0.070    2.070 v u_lane_repair/_0616_/Z (MUX2_X1)
+   0.047    2.116 v u_lane_repair/_0621_/ZN (XNOR2_X1)
+   0.074    2.190 ^ u_lane_repair/_0624_/ZN (XNOR2_X1)
+   0.073    2.263 ^ u_lane_repair/_0629_/ZN (XNOR2_X1)
+   0.055    2.318 ^ u_lane_repair/_0635_/ZN (XNOR2_X1)
+   0.017    2.335 v u_lane_repair/_0690_/ZN (NOR3_X1)
+   0.138    2.473 ^ u_lane_repair/_0696_/ZN (AOI221_X1)
+   0.067    2.540 v u_lane_repair/_0698_/ZN (XNOR2_X1)
+   0.124    2.664 ^ u_lane_repair/_0758_/ZN (NOR4_X1)
+   0.102    2.766 ^ u_lane_repair/_0761_/Z (XOR2_X1)
+   0.053    2.819 v u_lane_repair/_0763_/ZN (OAI211_X1)
+   0.066    2.885 v u_lane_repair/_0792_/ZN (AND3_X1)
+   0.046    2.931 v u_lane_repair/_0794_/ZN (XNOR2_X1)
+   0.098    3.028 ^ u_lane_repair/_0798_/ZN (OAI21_X1)
+   0.056    3.084 ^ u_lane_repair/_0801_/ZN (XNOR2_X1)
+   0.038    3.123 v u_lane_repair/_0806_/ZN (OAI21_X1)
+   0.205    3.328 ^ u_lane_repair/_0827_/ZN (AOI211_X1)
+   0.094    3.422 v u_lane_repair/_0960_/ZN (OAI211_X1)
+   0.068    3.491 ^ u_lane_repair/_0967_/ZN (AOI21_X1)
+   0.022    3.513 v u_lane_repair/_0980_/ZN (NOR3_X1)
+   0.056    3.569 v u_lane_repair/_0983_/Z (MUX2_X1)
+   0.042    3.611 v u_lane_repair/_1000_/ZN (AND4_X1)
+   0.064    3.676 ^ u_lane_repair/_1303_/ZN (NAND2_X1)
+   0.088    3.763 v u_pipe_a2b/u_rdi_tx/_13201_/ZN (NAND3_X1)
+   1.596    5.359 ^ u_pipe_a2b/u_rdi_tx/_13237_/ZN (XNOR2_X1)
+   3.922    9.282 v u_pipe_a2b/u_rdi_tx/_13268_/ZN (XNOR2_X1)
+   5.528   14.810 ^ u_pipe_a2b/u_rdi_tx/_13302_/ZN (XNOR2_X1)
+   4.358   19.168 v u_pipe_a2b/u_rdi_tx/_13330_/ZN (XNOR2_X1)
+   6.318   25.485 ^ u_pipe_a2b/u_rdi_tx/_13361_/ZN (XNOR2_X1)
+   4.742   30.228 v u_pipe_a2b/u_rdi_tx/_13392_/ZN (XNOR2_X1)
+   6.423   36.651 ^ u_pipe_a2b/u_rdi_tx/_13420_/ZN (XNOR2_X1)
+   4.469   41.120 v u_pipe_a2b/u_rdi_tx/_13455_/ZN (XNOR2_X1)
+   6.103   47.223 ^ u_pipe_a2b/u_rdi_tx/_13488_/ZN (XNOR2_X1)
+   4.486   51.708 v u_pipe_a2b/u_rdi_tx/_13520_/ZN (XNOR2_X1)
+   6.216   57.925 ^ u_pipe_a2b/u_rdi_tx/_13548_/ZN (XNOR2_X1)
+   4.609   62.534 v u_pipe_a2b/u_rdi_tx/_13578_/ZN (XNOR2_X1)
+   6.451   68.984 ^ u_pipe_a2b/u_rdi_tx/_13607_/ZN (XNOR2_X1)
+   4.796   73.780 v u_pipe_a2b/u_rdi_tx/_13636_/ZN (XNOR2_X1)
+   6.529   80.309 ^ u_pipe_a2b/u_rdi_tx/_13661_/ZN (XNOR2_X1)
+   0.118   80.427 v u_pipe_a2b/u_rdi_tx/_24321_/ZN (OAI211_X1)
+   0.077   80.504 ^ u_pipe_a2b/u_rdi_tx/_24328_/ZN (OAI211_X1)
+   0.063   80.567 ^ u_pipe_a2b/u_rdi_tx/_24330_/ZN (AND3_X1)
+   0.012   80.580 v u_pipe_a2b/u_rdi_tx/_24341_/ZN (NOR4_X1)
+   0.060   80.640 ^ u_pipe_a2b/u_rdi_tx/_24364_/ZN (AOI211_X1)
+   0.032   80.672 ^ u_pipe_a2b/u_rdi_tx/_24409_/ZN (OR3_X1)
+   0.014   80.686 v u_pipe_a2b/u_rdi_tx/_24415_/ZN (AOI22_X1)
+   0.039   80.725 ^ u_pipe_a2b/u_rdi_tx/_24416_/ZN (NOR2_X1)
+   0.051   80.776 ^ u_pipe_a2b/_5356_/ZN (XNOR2_X1)
+   0.000   80.776 ^ u_pipe_a2b/u_deskew/_09320_/A1 (OAI22_X1)
+           80.776   data arrival time
+
+  40.000   40.000   max_delay
+   0.000   40.000   output external delay
+           40.000   data required time
+-----------------------------------------------------------
+           40.000   data required time
+          -80.776   data arrival time
+-----------------------------------------------------------
+          -40.776   slack (VIOLATED)
+
+
+Startpoint: reversal_detect (input port clocked by lclk)
+Endpoint: u_pipe_b2a/u_deskew/_09320_/A1 (internal path endpoint)
+Path Group: path delay
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   2.000    2.000 ^ input external delay
+   0.000    2.000 ^ reversal_detect (in)
+   0.070    2.070 v u_lane_repair/_0616_/Z (MUX2_X1)
+   0.047    2.116 v u_lane_repair/_0621_/ZN (XNOR2_X1)
+   0.074    2.190 ^ u_lane_repair/_0624_/ZN (XNOR2_X1)
+   0.073    2.263 ^ u_lane_repair/_0629_/ZN (XNOR2_X1)
+   0.055    2.318 ^ u_lane_repair/_0635_/ZN (XNOR2_X1)
+   0.017    2.335 v u_lane_repair/_0690_/ZN (NOR3_X1)
+   0.138    2.473 ^ u_lane_repair/_0696_/ZN (AOI221_X1)
+   0.067    2.540 v u_lane_repair/_0698_/ZN (XNOR2_X1)
+   0.124    2.664 ^ u_lane_repair/_0758_/ZN (NOR4_X1)
+   0.102    2.766 ^ u_lane_repair/_0761_/Z (XOR2_X1)
+   0.053    2.819 v u_lane_repair/_0763_/ZN (OAI211_X1)
+   0.066    2.885 v u_lane_repair/_0792_/ZN (AND3_X1)
+   0.046    2.931 v u_lane_repair/_0794_/ZN (XNOR2_X1)
+   0.098    3.028 ^ u_lane_repair/_0798_/ZN (OAI21_X1)
+   0.056    3.084 ^ u_lane_repair/_0801_/ZN (XNOR2_X1)
+   0.038    3.123 v u_lane_repair/_0806_/ZN (OAI21_X1)
+   0.205    3.328 ^ u_lane_repair/_0827_/ZN (AOI211_X1)
+   0.094    3.422 v u_lane_repair/_0960_/ZN (OAI211_X1)
+   0.068    3.491 ^ u_lane_repair/_0967_/ZN (AOI21_X1)
+   0.022    3.513 v u_lane_repair/_0980_/ZN (NOR3_X1)
+   0.056    3.569 v u_lane_repair/_0983_/Z (MUX2_X1)
+   0.042    3.611 v u_lane_repair/_1000_/ZN (AND4_X1)
+   0.064    3.676 ^ u_lane_repair/_1303_/ZN (NAND2_X1)
+   0.088    3.763 v u_pipe_b2a/u_rdi_tx/_13201_/ZN (NAND3_X1)
+   1.596    5.359 ^ u_pipe_b2a/u_rdi_tx/_13237_/ZN (XNOR2_X1)
+   3.922    9.282 v u_pipe_b2a/u_rdi_tx/_13268_/ZN (XNOR2_X1)
+   5.528   14.810 ^ u_pipe_b2a/u_rdi_tx/_13302_/ZN (XNOR2_X1)
+   4.358   19.168 v u_pipe_b2a/u_rdi_tx/_13330_/ZN (XNOR2_X1)
+   6.318   25.485 ^ u_pipe_b2a/u_rdi_tx/_13361_/ZN (XNOR2_X1)
+   4.742   30.228 v u_pipe_b2a/u_rdi_tx/_13392_/ZN (XNOR2_X1)
+   6.423   36.651 ^ u_pipe_b2a/u_rdi_tx/_13420_/ZN (XNOR2_X1)
+   4.469   41.120 v u_pipe_b2a/u_rdi_tx/_13455_/ZN (XNOR2_X1)
+   6.103   47.223 ^ u_pipe_b2a/u_rdi_tx/_13488_/ZN (XNOR2_X1)
+   4.486   51.708 v u_pipe_b2a/u_rdi_tx/_13520_/ZN (XNOR2_X1)
+   6.216   57.925 ^ u_pipe_b2a/u_rdi_tx/_13548_/ZN (XNOR2_X1)
+   4.609   62.534 v u_pipe_b2a/u_rdi_tx/_13578_/ZN (XNOR2_X1)
+   6.451   68.984 ^ u_pipe_b2a/u_rdi_tx/_13607_/ZN (XNOR2_X1)
+   4.796   73.780 v u_pipe_b2a/u_rdi_tx/_13636_/ZN (XNOR2_X1)
+   6.529   80.309 ^ u_pipe_b2a/u_rdi_tx/_13661_/ZN (XNOR2_X1)
+   0.118   80.427 v u_pipe_b2a/u_rdi_tx/_24321_/ZN (OAI211_X1)
+   0.077   80.504 ^ u_pipe_b2a/u_rdi_tx/_24328_/ZN (OAI211_X1)
+   0.063   80.567 ^ u_pipe_b2a/u_rdi_tx/_24330_/ZN (AND3_X1)
+   0.012   80.580 v u_pipe_b2a/u_rdi_tx/_24341_/ZN (NOR4_X1)
+   0.060   80.640 ^ u_pipe_b2a/u_rdi_tx/_24364_/ZN (AOI211_X1)
+   0.032   80.672 ^ u_pipe_b2a/u_rdi_tx/_24409_/ZN (OR3_X1)
+   0.014   80.686 v u_pipe_b2a/u_rdi_tx/_24415_/ZN (AOI22_X1)
+   0.039   80.725 ^ u_pipe_b2a/u_rdi_tx/_24416_/ZN (NOR2_X1)
+   0.051   80.776 ^ u_pipe_b2a/_5356_/ZN (XNOR2_X1)
+   0.000   80.776 ^ u_pipe_b2a/u_deskew/_09320_/A1 (OAI22_X1)
+           80.776   data arrival time
+
+  40.000   40.000   max_delay
+   0.000   40.000   output external delay
+           40.000   data required time
+-----------------------------------------------------------
+           40.000   data required time
+          -80.776   data arrival time
+-----------------------------------------------------------
+          -40.776   slack (VIOLATED)
+
+
+Startpoint: reversal_detect (input port clocked by lclk)
+Endpoint: u_pipe_a2b/u_deskew/_09317_/C1 (internal path endpoint)
+Path Group: path delay
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   2.000    2.000 ^ input external delay
+   0.000    2.000 ^ reversal_detect (in)
+   0.070    2.070 v u_lane_repair/_0616_/Z (MUX2_X1)
+   0.047    2.116 v u_lane_repair/_0621_/ZN (XNOR2_X1)
+   0.074    2.190 ^ u_lane_repair/_0624_/ZN (XNOR2_X1)
+   0.073    2.263 ^ u_lane_repair/_0629_/ZN (XNOR2_X1)
+   0.055    2.318 ^ u_lane_repair/_0635_/ZN (XNOR2_X1)
+   0.017    2.335 v u_lane_repair/_0690_/ZN (NOR3_X1)
+   0.138    2.473 ^ u_lane_repair/_0696_/ZN (AOI221_X1)
+   0.067    2.540 v u_lane_repair/_0698_/ZN (XNOR2_X1)
+   0.124    2.664 ^ u_lane_repair/_0758_/ZN (NOR4_X1)
+   0.102    2.766 ^ u_lane_repair/_0761_/Z (XOR2_X1)
+   0.053    2.819 v u_lane_repair/_0763_/ZN (OAI211_X1)
+   0.066    2.885 v u_lane_repair/_0792_/ZN (AND3_X1)
+   0.046    2.931 v u_lane_repair/_0794_/ZN (XNOR2_X1)
+   0.098    3.028 ^ u_lane_repair/_0798_/ZN (OAI21_X1)
+   0.056    3.084 ^ u_lane_repair/_0801_/ZN (XNOR2_X1)
+   0.038    3.123 v u_lane_repair/_0806_/ZN (OAI21_X1)
+   0.205    3.328 ^ u_lane_repair/_0827_/ZN (AOI211_X1)
+   0.094    3.422 v u_lane_repair/_0960_/ZN (OAI211_X1)
+   0.068    3.491 ^ u_lane_repair/_0967_/ZN (AOI21_X1)
+   0.022    3.513 v u_lane_repair/_0980_/ZN (NOR3_X1)
+   0.056    3.569 v u_lane_repair/_0983_/Z (MUX2_X1)
+   0.042    3.611 v u_lane_repair/_1000_/ZN (AND4_X1)
+   0.064    3.676 ^ u_lane_repair/_1303_/ZN (NAND2_X1)
+   0.088    3.763 v u_pipe_a2b/u_rdi_tx/_13201_/ZN (NAND3_X1)
+   1.596    5.359 ^ u_pipe_a2b/u_rdi_tx/_13237_/ZN (XNOR2_X1)
+   3.922    9.282 v u_pipe_a2b/u_rdi_tx/_13268_/ZN (XNOR2_X1)
+   5.528   14.810 ^ u_pipe_a2b/u_rdi_tx/_13302_/ZN (XNOR2_X1)
+   4.358   19.168 v u_pipe_a2b/u_rdi_tx/_13330_/ZN (XNOR2_X1)
+   6.318   25.485 ^ u_pipe_a2b/u_rdi_tx/_13361_/ZN (XNOR2_X1)
+   4.742   30.228 v u_pipe_a2b/u_rdi_tx/_13392_/ZN (XNOR2_X1)
+   6.423   36.651 ^ u_pipe_a2b/u_rdi_tx/_13420_/ZN (XNOR2_X1)
+   4.469   41.120 v u_pipe_a2b/u_rdi_tx/_13455_/ZN (XNOR2_X1)
+   6.103   47.223 ^ u_pipe_a2b/u_rdi_tx/_13488_/ZN (XNOR2_X1)
+   4.486   51.708 v u_pipe_a2b/u_rdi_tx/_13520_/ZN (XNOR2_X1)
+   6.216   57.925 ^ u_pipe_a2b/u_rdi_tx/_13548_/ZN (XNOR2_X1)
+   4.609   62.534 v u_pipe_a2b/u_rdi_tx/_13578_/ZN (XNOR2_X1)
+   6.451   68.984 ^ u_pipe_a2b/u_rdi_tx/_13607_/ZN (XNOR2_X1)
+   4.796   73.780 v u_pipe_a2b/u_rdi_tx/_13636_/ZN (XNOR2_X1)
+   6.529   80.309 ^ u_pipe_a2b/u_rdi_tx/_13661_/ZN (XNOR2_X1)
+   0.118   80.427 v u_pipe_a2b/u_rdi_tx/_24491_/ZN (OAI211_X1)
+   0.081   80.508 ^ u_pipe_a2b/u_rdi_tx/_24499_/ZN (OAI211_X1)
+   0.037   80.545 v u_pipe_a2b/u_rdi_tx/_24500_/ZN (OAI211_X1)
+   0.060   80.606 ^ u_pipe_a2b/u_rdi_tx/_24512_/ZN (AOI21_X1)
+   0.018   80.623 v u_pipe_a2b/u_rdi_tx/_24513_/ZN (AOI21_X1)
+   0.032   80.655 ^ u_pipe_a2b/u_rdi_tx/_24514_/ZN (OAI21_X1)
+   0.024   80.679 v u_pipe_a2b/u_rdi_tx/_24515_/ZN (AOI22_X1)
+   0.039   80.718 ^ u_pipe_a2b/u_rdi_tx/_24516_/ZN (NOR2_X1)
+   0.051   80.769 ^ u_pipe_a2b/_5359_/ZN (XNOR2_X1)
+   0.000   80.769 ^ u_pipe_a2b/u_deskew/_09317_/C1 (OAI211_X1)
+           80.769   data arrival time
+
+  40.000   40.000   max_delay
+   0.000   40.000   output external delay
+           40.000   data required time
+-----------------------------------------------------------
+           40.000   data required time
+          -80.769   data arrival time
+-----------------------------------------------------------
+          -40.769   slack (VIOLATED)
+
+
+Startpoint: a_tx_valid (input port clocked by lclk)
+Endpoint: u_dll_a/u_retry/_27467_
+          (rising edge-triggered flip-flop clocked by lclk)
+Path Group: lclk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock lclk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   2.000    2.000 ^ input external delay
+   0.000    2.000 ^ a_tx_valid (in)
+   0.035    2.035 ^ u_dll_a/_11505_/ZN (AND2_X1)
+   0.055    2.090 v u_dll_a/u_retry/_14324_/ZN (NAND4_X1)
+  11.362   13.452 ^ u_dll_a/u_retry/_14327_/ZN (NOR4_X1)
+   0.394   13.846 v u_dll_a/u_retry/_14374_/ZN (NAND4_X1)
+   0.302   14.148 ^ u_dll_a/u_retry/_14375_/ZN (NOR2_X1)
+   0.068   14.216 v u_dll_a/u_retry/_14414_/Z (MUX2_X1)
+   0.065   14.281 ^ u_dll_a/u_retry/_14416_/ZN (OAI222_X1)
+   0.019   14.300 v u_dll_a/u_retry/_14418_/ZN (NOR3_X1)
+   9.036   23.336 ^ u_dll_a/u_retry/_14419_/ZN (AOI21_X1)
+   0.455   23.791 v u_dll_a/u_retry/_18096_/ZN (NAND3_X1)
+   0.333   24.124 v u_dll_a/u_retry/_18102_/Z (XOR2_X1)
+   0.000   24.124 v u_dll_a/u_retry/_27467_/D (DFF_X1)
+           24.124   data arrival time
+
+  10.000   10.000   clock lclk (rise edge)
+   0.000   10.000   clock network delay (ideal)
+  -0.150    9.850   clock uncertainty
+   0.000    9.850   clock reconvergence pessimism
+            9.850 ^ u_dll_a/u_retry/_27467_/CK (DFF_X1)
+  -0.040    9.810   library setup time
+            9.810   data required time
+-----------------------------------------------------------
+            9.810   data required time
+          -24.124   data arrival time
+-----------------------------------------------------------
+          -14.314   slack (VIOLATED)
+
+
+Startpoint: b_tx_valid (input port clocked by lclk)
+Endpoint: u_dll_b/u_retry/_27467_
+          (rising edge-triggered flip-flop clocked by lclk)
+Path Group: lclk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock lclk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   2.000    2.000 ^ input external delay
+   0.000    2.000 ^ b_tx_valid (in)
+   0.035    2.035 ^ u_dll_b/_11505_/ZN (AND2_X1)
+   0.055    2.090 v u_dll_b/u_retry/_14324_/ZN (NAND4_X1)
+  11.362   13.452 ^ u_dll_b/u_retry/_14327_/ZN (NOR4_X1)
+   0.394   13.846 v u_dll_b/u_retry/_14374_/ZN (NAND4_X1)
+   0.302   14.148 ^ u_dll_b/u_retry/_14375_/ZN (NOR2_X1)
+   0.068   14.216 v u_dll_b/u_retry/_14414_/Z (MUX2_X1)
+   0.065   14.281 ^ u_dll_b/u_retry/_14416_/ZN (OAI222_X1)
+   0.019   14.300 v u_dll_b/u_retry/_14418_/ZN (NOR3_X1)
+   9.036   23.336 ^ u_dll_b/u_retry/_14419_/ZN (AOI21_X1)
+   0.455   23.791 v u_dll_b/u_retry/_18096_/ZN (NAND3_X1)
+   0.333   24.124 v u_dll_b/u_retry/_18102_/Z (XOR2_X1)
+   0.000   24.124 v u_dll_b/u_retry/_27467_/D (DFF_X1)
+           24.124   data arrival time
+
+  10.000   10.000   clock lclk (rise edge)
+   0.000   10.000   clock network delay (ideal)
+  -0.150    9.850   clock uncertainty
+   0.000    9.850   clock reconvergence pessimism
+            9.850 ^ u_dll_b/u_retry/_27467_/CK (DFF_X1)
+  -0.040    9.810   library setup time
+            9.810   data required time
+-----------------------------------------------------------
+            9.810   data required time
+          -24.124   data arrival time
+-----------------------------------------------------------
+          -14.314   slack (VIOLATED)
+
+
+Startpoint: a_tx_valid (input port clocked by lclk)
+Endpoint: u_dll_a/u_retry/_27466_
+          (rising edge-triggered flip-flop clocked by lclk)
+Path Group: lclk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock lclk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   2.000    2.000 ^ input external delay
+   0.000    2.000 ^ a_tx_valid (in)
+   0.035    2.035 ^ u_dll_a/_11505_/ZN (AND2_X1)
+   0.055    2.090 v u_dll_a/u_retry/_14324_/ZN (NAND4_X1)
+  11.362   13.452 ^ u_dll_a/u_retry/_14327_/ZN (NOR4_X1)
+   0.394   13.846 v u_dll_a/u_retry/_14374_/ZN (NAND4_X1)
+   0.302   14.148 ^ u_dll_a/u_retry/_14375_/ZN (NOR2_X1)
+   0.068   14.216 v u_dll_a/u_retry/_14414_/Z (MUX2_X1)
+   0.065   14.281 ^ u_dll_a/u_retry/_14416_/ZN (OAI222_X1)
+   0.019   14.300 v u_dll_a/u_retry/_14418_/ZN (NOR3_X1)
+   9.036   23.336 ^ u_dll_a/u_retry/_14419_/ZN (AOI21_X1)
+   0.455   23.791 v u_dll_a/u_retry/_18096_/ZN (NAND3_X1)
+   0.234   24.025 v u_dll_a/u_retry/_18104_/ZN (AND2_X1)
+   0.000   24.025 v u_dll_a/u_retry/_27466_/D (DFF_X1)
+           24.025   data arrival time
+
+  10.000   10.000   clock lclk (rise edge)
+   0.000   10.000   clock network delay (ideal)
+  -0.150    9.850   clock uncertainty
+   0.000    9.850   clock reconvergence pessimism
+            9.850 ^ u_dll_a/u_retry/_27466_/CK (DFF_X1)
+  -0.036    9.814   library setup time
+            9.814   data required time
+-----------------------------------------------------------
+            9.814   data required time
+          -24.025   data arrival time
+-----------------------------------------------------------
+          -14.212   slack (VIOLATED)
+
+
+Startpoint: u_pipe_a2b/u_rdi_tx/_26437_
+            (rising edge-triggered flip-flop clocked by rdi_clk)
+Endpoint: u_pipe_a2b/u_rdi_rx/_44419_
+          (rising edge-triggered flip-flop clocked by rdi_clk)
+Path Group: rdi_clk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock rdi_clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 ^ u_pipe_a2b/u_rdi_tx/_26437_/CK (DFF_X1)
+   0.185    0.185 v u_pipe_a2b/u_rdi_tx/_26437_/Q (DFF_X1)
+   0.570    0.755 ^ u_pipe_a2b/u_rdi_tx/_13195_/ZN (NAND2_X1)
+   0.185    0.940 v u_pipe_a2b/u_rdi_tx/_13197_/ZN (NAND2_X1)
+   0.040    0.980 ^ u_pipe_a2b/u_rdi_tx/_13199_/ZN (NAND2_X1)
+   0.078    1.057 v u_pipe_a2b/u_rdi_tx/_13201_/ZN (NAND3_X1)
+   1.596    2.653 ^ u_pipe_a2b/u_rdi_tx/_13237_/ZN (XNOR2_X1)
+   3.922    6.576 v u_pipe_a2b/u_rdi_tx/_13268_/ZN (XNOR2_X1)
+   5.528   12.104 ^ u_pipe_a2b/u_rdi_tx/_13302_/ZN (XNOR2_X1)
+   4.358   16.462 v u_pipe_a2b/u_rdi_tx/_13330_/ZN (XNOR2_X1)
+   6.318   22.779 ^ u_pipe_a2b/u_rdi_tx/_13361_/ZN (XNOR2_X1)
+   4.742   27.522 v u_pipe_a2b/u_rdi_tx/_13392_/ZN (XNOR2_X1)
+   6.423   33.945 ^ u_pipe_a2b/u_rdi_tx/_13420_/ZN (XNOR2_X1)
+   4.469   38.414 v u_pipe_a2b/u_rdi_tx/_13455_/ZN (XNOR2_X1)
+   6.103   44.517 ^ u_pipe_a2b/u_rdi_tx/_13488_/ZN (XNOR2_X1)
+   4.486   49.002 v u_pipe_a2b/u_rdi_tx/_13520_/ZN (XNOR2_X1)
+   6.216   55.219 ^ u_pipe_a2b/u_rdi_tx/_13548_/ZN (XNOR2_X1)
+   4.609   59.828 v u_pipe_a2b/u_rdi_tx/_13578_/ZN (XNOR2_X1)
+   6.451   66.278 ^ u_pipe_a2b/u_rdi_tx/_13607_/ZN (XNOR2_X1)
+   4.796   71.074 v u_pipe_a2b/u_rdi_tx/_13636_/ZN (XNOR2_X1)
+   6.529   77.603 ^ u_pipe_a2b/u_rdi_tx/_13661_/ZN (XNOR2_X1)
+   0.118   77.721 v u_pipe_a2b/u_rdi_tx/_24931_/ZN (OAI211_X1)
+   0.081   77.802 ^ u_pipe_a2b/u_rdi_tx/_24934_/ZN (OAI211_X1)
+   0.037   77.840 v u_pipe_a2b/u_rdi_tx/_24935_/ZN (OAI211_X1)
+   0.093   77.933 ^ u_pipe_a2b/u_rdi_tx/_24969_/ZN (AOI221_X1)
+   0.036   77.968 ^ u_pipe_a2b/u_rdi_tx/_24993_/ZN (OR3_X1)
+   0.015   77.983 v u_pipe_a2b/u_rdi_tx/_24999_/ZN (AOI22_X1)
+   0.039   78.022 ^ u_pipe_a2b/u_rdi_tx/_25000_/ZN (NOR2_X1)
+   0.048   78.070 ^ u_pipe_a2b/_6573_/ZN (XNOR2_X1)
+   0.053   78.124 ^ u_pipe_a2b/u_deskew/_09554_/Z (MUX2_X1)
+   0.196   78.320 ^ u_pipe_a2b/u_rdi_rx/_24354_/ZN (AND2_X1)
+   0.058   78.378 ^ u_pipe_a2b/u_rdi_rx/_31561_/ZN (AND2_X1)
+   0.015   78.392 v u_pipe_a2b/u_rdi_rx/_31562_/ZN (NAND2_X1)
+   0.119   78.512 ^ u_pipe_a2b/u_rdi_rx/_31563_/ZN (OAI211_X1)
+   0.057   78.568 ^ u_pipe_a2b/u_rdi_rx/_31564_/Z (MUX2_X1)
+   0.000   78.568 ^ u_pipe_a2b/u_rdi_rx/_44419_/D (DFF_X1)
+           78.568   data arrival time
+
+   7.500    7.500   clock rdi_clk (rise edge)
+   0.000    7.500   clock network delay (ideal)
+  -0.150    7.350   clock uncertainty
+   0.000    7.350   clock reconvergence pessimism
+            7.350 ^ u_pipe_a2b/u_rdi_rx/_44419_/CK (DFF_X1)
+  -0.037    7.313   library setup time
+            7.313   data required time
+-----------------------------------------------------------
+            7.313   data required time
+          -78.568   data arrival time
+-----------------------------------------------------------
+          -71.255   slack (VIOLATED)
+
+
+Startpoint: u_pipe_b2a/u_rdi_tx/_26437_
+            (rising edge-triggered flip-flop clocked by rdi_clk)
+Endpoint: u_pipe_b2a/u_rdi_rx/_44419_
+          (rising edge-triggered flip-flop clocked by rdi_clk)
+Path Group: rdi_clk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock rdi_clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 ^ u_pipe_b2a/u_rdi_tx/_26437_/CK (DFF_X1)
+   0.185    0.185 v u_pipe_b2a/u_rdi_tx/_26437_/Q (DFF_X1)
+   0.570    0.755 ^ u_pipe_b2a/u_rdi_tx/_13195_/ZN (NAND2_X1)
+   0.185    0.940 v u_pipe_b2a/u_rdi_tx/_13197_/ZN (NAND2_X1)
+   0.040    0.980 ^ u_pipe_b2a/u_rdi_tx/_13199_/ZN (NAND2_X1)
+   0.078    1.057 v u_pipe_b2a/u_rdi_tx/_13201_/ZN (NAND3_X1)
+   1.596    2.653 ^ u_pipe_b2a/u_rdi_tx/_13237_/ZN (XNOR2_X1)
+   3.922    6.576 v u_pipe_b2a/u_rdi_tx/_13268_/ZN (XNOR2_X1)
+   5.528   12.104 ^ u_pipe_b2a/u_rdi_tx/_13302_/ZN (XNOR2_X1)
+   4.358   16.462 v u_pipe_b2a/u_rdi_tx/_13330_/ZN (XNOR2_X1)
+   6.318   22.779 ^ u_pipe_b2a/u_rdi_tx/_13361_/ZN (XNOR2_X1)
+   4.742   27.522 v u_pipe_b2a/u_rdi_tx/_13392_/ZN (XNOR2_X1)
+   6.423   33.945 ^ u_pipe_b2a/u_rdi_tx/_13420_/ZN (XNOR2_X1)
+   4.469   38.414 v u_pipe_b2a/u_rdi_tx/_13455_/ZN (XNOR2_X1)
+   6.103   44.517 ^ u_pipe_b2a/u_rdi_tx/_13488_/ZN (XNOR2_X1)
+   4.486   49.002 v u_pipe_b2a/u_rdi_tx/_13520_/ZN (XNOR2_X1)
+   6.216   55.219 ^ u_pipe_b2a/u_rdi_tx/_13548_/ZN (XNOR2_X1)
+   4.609   59.828 v u_pipe_b2a/u_rdi_tx/_13578_/ZN (XNOR2_X1)
+   6.451   66.278 ^ u_pipe_b2a/u_rdi_tx/_13607_/ZN (XNOR2_X1)
+   4.796   71.074 v u_pipe_b2a/u_rdi_tx/_13636_/ZN (XNOR2_X1)
+   6.529   77.603 ^ u_pipe_b2a/u_rdi_tx/_13661_/ZN (XNOR2_X1)
+   0.118   77.721 v u_pipe_b2a/u_rdi_tx/_24931_/ZN (OAI211_X1)
+   0.081   77.802 ^ u_pipe_b2a/u_rdi_tx/_24934_/ZN (OAI211_X1)
+   0.037   77.840 v u_pipe_b2a/u_rdi_tx/_24935_/ZN (OAI211_X1)
+   0.093   77.933 ^ u_pipe_b2a/u_rdi_tx/_24969_/ZN (AOI221_X1)
+   0.036   77.968 ^ u_pipe_b2a/u_rdi_tx/_24993_/ZN (OR3_X1)
+   0.015   77.983 v u_pipe_b2a/u_rdi_tx/_24999_/ZN (AOI22_X1)
+   0.039   78.022 ^ u_pipe_b2a/u_rdi_tx/_25000_/ZN (NOR2_X1)
+   0.048   78.070 ^ u_pipe_b2a/_6573_/ZN (XNOR2_X1)
+   0.053   78.124 ^ u_pipe_b2a/u_deskew/_09554_/Z (MUX2_X1)
+   0.196   78.320 ^ u_pipe_b2a/u_rdi_rx/_24354_/ZN (AND2_X1)
+   0.058   78.378 ^ u_pipe_b2a/u_rdi_rx/_31561_/ZN (AND2_X1)
+   0.015   78.392 v u_pipe_b2a/u_rdi_rx/_31562_/ZN (NAND2_X1)
+   0.119   78.512 ^ u_pipe_b2a/u_rdi_rx/_31563_/ZN (OAI211_X1)
+   0.057   78.568 ^ u_pipe_b2a/u_rdi_rx/_31564_/Z (MUX2_X1)
+   0.000   78.568 ^ u_pipe_b2a/u_rdi_rx/_44419_/D (DFF_X1)
+           78.568   data arrival time
+
+   7.500    7.500   clock rdi_clk (rise edge)
+   0.000    7.500   clock network delay (ideal)
+  -0.150    7.350   clock uncertainty
+   0.000    7.350   clock reconvergence pessimism
+            7.350 ^ u_pipe_b2a/u_rdi_rx/_44419_/CK (DFF_X1)
+  -0.037    7.313   library setup time
+            7.313   data required time
+-----------------------------------------------------------
+            7.313   data required time
+          -78.568   data arrival time
+-----------------------------------------------------------
+          -71.255   slack (VIOLATED)
+
+
+Startpoint: u_pipe_a2b/u_rdi_tx/_26437_
+            (rising edge-triggered flip-flop clocked by rdi_clk)
+Endpoint: u_pipe_a2b/u_rdi_rx/_44312_
+          (rising edge-triggered flip-flop clocked by rdi_clk)
+Path Group: rdi_clk
+Path Type: max
+
+   Delay     Time   Description
+-----------------------------------------------------------
+   0.000    0.000   clock rdi_clk (rise edge)
+   0.000    0.000   clock network delay (ideal)
+   0.000    0.000 ^ u_pipe_a2b/u_rdi_tx/_26437_/CK (DFF_X1)
+   0.185    0.185 v u_pipe_a2b/u_rdi_tx/_26437_/Q (DFF_X1)
+   0.570    0.755 ^ u_pipe_a2b/u_rdi_tx/_13195_/ZN (NAND2_X1)
+   0.185    0.940 v u_pipe_a2b/u_rdi_tx/_13197_/ZN (NAND2_X1)
+   0.040    0.980 ^ u_pipe_a2b/u_rdi_tx/_13199_/ZN (NAND2_X1)
+   0.078    1.057 v u_pipe_a2b/u_rdi_tx/_13201_/ZN (NAND3_X1)
+   1.596    2.653 ^ u_pipe_a2b/u_rdi_tx/_13237_/ZN (XNOR2_X1)
+   3.922    6.576 v u_pipe_a2b/u_rdi_tx/_13268_/ZN (XNOR2_X1)
+   5.528   12.104 ^ u_pipe_a2b/u_rdi_tx/_13302_/ZN (XNOR2_X1)
+   4.358   16.462 v u_pipe_a2b/u_rdi_tx/_13330_/ZN (XNOR2_X1)
+   6.318   22.779 ^ u_pipe_a2b/u_rdi_tx/_13361_/ZN (XNOR2_X1)
+   4.742   27.522 v u_pipe_a2b/u_rdi_tx/_13392_/ZN (XNOR2_X1)
+   6.423   33.945 ^ u_pipe_a2b/u_rdi_tx/_13420_/ZN (XNOR2_X1)
+   4.469   38.414 v u_pipe_a2b/u_rdi_tx/_13455_/ZN (XNOR2_X1)
+   6.103   44.517 ^ u_pipe_a2b/u_rdi_tx/_13488_/ZN (XNOR2_X1)
+   4.486   49.002 v u_pipe_a2b/u_rdi_tx/_13520_/ZN (XNOR2_X1)
+   6.216   55.219 ^ u_pipe_a2b/u_rdi_tx/_13548_/ZN (XNOR2_X1)
+   4.609   59.828 v u_pipe_a2b/u_rdi_tx/_13578_/ZN (XNOR2_X1)
+   6.451   66.278 ^ u_pipe_a2b/u_rdi_tx/_13607_/ZN (XNOR2_X1)
+   4.796   71.074 v u_pipe_a2b/u_rdi_tx/_13636_/ZN (XNOR2_X1)
+   6.529   77.603 ^ u_pipe_a2b/u_rdi_tx/_13661_/ZN (XNOR2_X1)
+   0.118   77.721 v u_pipe_a2b/u_rdi_tx/_24321_/ZN (OAI211_X1)
+   0.077   77.798 ^ u_pipe_a2b/u_rdi_tx/_24328_/ZN (OAI211_X1)
+   0.063   77.861 ^ u_pipe_a2b/u_rdi_tx/_24330_/ZN (AND3_X1)
+   0.012   77.874 v u_pipe_a2b/u_rdi_tx/_24341_/ZN (NOR4_X1)
+   0.060   77.934 ^ u_pipe_a2b/u_rdi_tx/_24364_/ZN (AOI211_X1)
+   0.032   77.966 ^ u_pipe_a2b/u_rdi_tx/_24409_/ZN (OR3_X1)
+   0.014   77.980 v u_pipe_a2b/u_rdi_tx/_24415_/ZN (AOI22_X1)
+   0.039   78.019 ^ u_pipe_a2b/u_rdi_tx/_24416_/ZN (NOR2_X1)
+   0.051   78.070 ^ u_pipe_a2b/_5356_/ZN (XNOR2_X1)
+   0.014   78.084 v u_pipe_a2b/u_deskew/_05865_/ZN (INV_X1)
+   0.049   78.132 ^ u_pipe_a2b/u_deskew/_07167_/ZN (AOI22_X1)
+   0.008   78.140 v u_pipe_a2b/u_rdi_rx/_22568_/ZN (INV_X1)
+   0.184   78.324 ^ u_pipe_a2b/u_rdi_rx/_23740_/ZN (AOI21_X1)
+   0.083   78.407 ^ u_pipe_a2b/u_rdi_rx/_25043_/ZN (AND4_X1)
+   0.017   78.424 v u_pipe_a2b/u_rdi_rx/_35545_/ZN (NAND2_X1)
+   0.089   78.513 ^ u_pipe_a2b/u_rdi_rx/_35574_/ZN (OAI211_X1)
+   0.055   78.568 ^ u_pipe_a2b/u_rdi_rx/_35575_/Z (MUX2_X1)
+   0.000   78.568 ^ u_pipe_a2b/u_rdi_rx/_44312_/D (DFF_X1)
+           78.568   data arrival time
+
+   7.500    7.500   clock rdi_clk (rise edge)
+   0.000    7.500   clock network delay (ideal)
+  -0.150    7.350   clock uncertainty
+   0.000    7.350   clock reconvergence pessimism
+            7.350 ^ u_pipe_a2b/u_rdi_rx/_44312_/CK (DFF_X1)
+  -0.037    7.313   library setup time
+            7.313   data required time
+-----------------------------------------------------------
+            7.313   data required time
+          -78.568   data arrival time
+-----------------------------------------------------------
+          -71.255   slack (VIOLATED)
+
+
+
+-- 时钟
+Clock                   Period          Waveform
+----------------------------------------------------
+lclk                     10.00        0.00      5.00
+rdi_clk                   7.50        0.00      3.75
+
+-- 面积：面积/单元统计在综合阶段直接从门级网表统计（见 flow/Makefile 输出与
+   build/syn/ucie_d2d_top_mapped.v）；OpenSTA 3.1.0 没有 report_design_area 命令。
+=================================================
+
+签核报告：../build/syn/sta.log

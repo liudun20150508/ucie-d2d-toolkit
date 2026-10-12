@@ -1,0 +1,486 @@
+
+23. Printing statistics.
+
+=== $paramod$070b37ddfaf5658f5645b73613394ec360021e02\ucie_link_retry ===
+
+        +----------Local Count, excluding submodules.
+        | 
+    14066 wires
+    20153 wire bits
+       35 public wires
+     6122 public wire bits
+       14 ports
+     1136 port bits
+    14000 cells
+      579   AND2_X1
+       10   AND3_X1
+        2   AND4_X1
+       20   AOI211_X1
+      993   AOI21_X1
+      140   AOI221_X1
+      682   AOI222_X1
+      819   AOI22_X1
+     4953   DFF_X1
+       57   INV_X1
+     4376   MUX2_X1
+      202   NAND2_X1
+      425   NAND3_X1
+        6   NAND4_X1
+       50   NOR2_X1
+       25   NOR3_X1
+        4   NOR4_X1
+       13   OAI211_X1
+      569   OAI21_X1
+        2   OAI221_X1
+        5   OAI222_X1
+        8   OAI22_X1
+        1   OAI33_X1
+        6   OR2_X1
+        3   OR3_X1
+       40   XNOR2_X1
+       10   XOR2_X1
+
+=== $paramod$c1ca8137c612df812efb615ae085819c49b7c6f2\ucie_dll ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     6722 wires
+    19127 wire bits
+      339 public wires
+    12744 public wire bits
+       25 ports
+     2252 port bits
+     7413 cells
+      631   AND2_X1
+       21   AND3_X1
+       11   AND4_X1
+        5   AOI211_X1
+       80   AOI21_X1
+        4   AOI221_X1
+       11   AOI222_X1
+     1057   AOI22_X1
+     2289   DFF_X1
+       88   INV_X1
+     2171   MUX2_X1
+      636   NAND2_X1
+       22   NAND3_X1
+       14   NAND4_X1
+      150   NOR2_X1
+       27   NOR3_X1
+       12   NOR4_X1
+        8   OAI211_X1
+       44   OAI21_X1
+        2   OAI221_X1
+       13   OAI22_X1
+        1   OAI33_X1
+       20   OR2_X1
+       10   OR3_X1
+        3   OR4_X1
+       54   XNOR2_X1
+       29   XOR2_X1
+        3 submodules
+        1   $paramod$070b37ddfaf5658f5645b73613394ec360021e02\ucie_link_retry
+        1   ucie_flit_rx
+        1   ucie_flit_tx
+
+=== $paramod$dbfe390d31b63840811040002731652b93721b2a\ucie_afifo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+    10922 wires
+    16358 wire bits
+       20 public wires
+     5456 public wire bits
+       10 ports
+     1096 port bits
+    11416 cells
+       19   AND2_X1
+        4   AND3_X1
+        1   AND4_X1
+        7   AOI21_X1
+      152   AOI221_X1
+      682   AOI222_X1
+      984   AOI22_X1
+     4384   DFF_X1
+      164   INV_X1
+     4360   MUX2_X1
+       61   NAND2_X1
+      483   NAND3_X1
+       70   NAND4_X1
+        8   NOR2_X1
+        6   NOR3_X1
+        5   NOR4_X1
+       10   OAI21_X1
+        2   OAI221_X1
+        1   OAI22_X1
+        3   OR3_X1
+        7   XNOR2_X1
+        3   XOR2_X1
+
+=== $paramod\ucie_link_pipe\DATA_GATING=s32'00000000000000000000000000000000 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     3697 wires
+     8645 wire bits
+       54 public wires
+     5002 public wire bits
+       23 ports
+     1203 port bits
+     3646 cells
+      573   AND2_X1
+        5   AND3_X1
+        2   AND4_X1
+      559   AOI21_X1
+      706   DFF_X1
+      701   INV_X1
+        6   MUX2_X1
+      193   NAND2_X1
+       22   NAND3_X1
+       12   NAND4_X1
+      576   NOR2_X1
+        9   NOR3_X1
+       12   NOR4_X1
+        3   OAI21_X1
+      127   OAI22_X1
+        4   OR2_X1
+      135   XNOR2_X1
+        1   XOR2_X1
+        5 submodules
+        2   $paramod$dbfe390d31b63840811040002731652b93721b2a\ucie_afifo
+        1   $paramod\ucie_rdi_tx\DATA_GATING=s32'00000000000000000000000000000000
+        1   ucie_deskew
+        1   ucie_rdi_rx
+
+=== $paramod\ucie_rdi_tx\DATA_GATING=s32'00000000000000000000000000000000 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+    13169 wires
+    13962 wire bits
+       16 public wires
+      809 public wire bits
+       11 ports
+      711 port bits
+    13290 cells
+       71   AND2_X1
+       18   AND3_X1
+        7   AND4_X1
+      182   AOI211_X1
+      654   AOI21_X1
+      312   AOI221_X1
+        8   AOI222_X1
+      326   AOI22_X1
+        9   DFF_X1
+       66   INV_X1
+      175   MUX2_X1
+      366   NAND2_X1
+      173   NAND3_X1
+       19   NAND4_X1
+     3311   NOR2_X1
+       24   NOR3_X1
+       21   NOR4_X1
+     1611   OAI211_X1
+     3685   OAI21_X1
+      241   OAI221_X1
+      986   OAI22_X1
+        1   OAI33_X1
+      829   OR2_X1
+       47   OR3_X1
+       14   OR4_X1
+      129   XNOR2_X1
+        5   XOR2_X1
+
+=== ucie_d2d_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       88 wires
+     4755 wire bits
+       74 public wires
+     4741 public wire bits
+       43 ports
+     2424 port bits
+       24 cells
+        2   AND2_X1
+        7   BUF_X1
+        1   DFF_X1
+        5   INV_X1
+        3   NAND2_X1
+        1   NAND3_X1
+        1   NAND4_X1
+        1   NOR2_X1
+        1   NOR3_X1
+        1   NOR4_X1
+        1   OR3_X1
+        6 submodules
+        2   $paramod$c1ca8137c612df812efb615ae085819c49b7c6f2\ucie_dll
+        2   $paramod\ucie_link_pipe\DATA_GATING=s32'00000000000000000000000000000000
+        1   ucie_lane_repair
+        1   ucie_ltssm
+
+=== ucie_deskew ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     5773 wires
+     6363 wire bits
+       25 public wires
+      615 public wire bits
+       15 ports
+      370 port bits
+     5044 cells
+      711   AND2_X1
+       50   AND3_X1
+       14   AND4_X1
+      178   AOI211_X1
+      307   AOI21_X1
+       75   AOI221_X1
+       55   AOI222_X1
+      230   AOI22_X1
+      901   DFF_X1
+      336   INV_X1
+       89   MUX2_X1
+      738   NAND2_X1
+      141   NAND3_X1
+       65   NAND4_X1
+      302   NOR2_X1
+      120   NOR3_X1
+       36   NOR4_X1
+      155   OAI211_X1
+      253   OAI21_X1
+       13   OAI221_X1
+       53   OAI22_X1
+        2   OAI33_X1
+       38   OR2_X1
+       16   OR3_X1
+        9   OR4_X1
+      100   XNOR2_X1
+       57   XOR2_X1
+
+=== ucie_flit_rx ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     4396 wires
+    10145 wire bits
+      150 public wires
+     5899 public wire bits
+       11 ports
+     1080 port bits
+     4247 cells
+      533   AND2_X1
+        1   AND3_X1
+      531   AOI21_X1
+        2   AOI22_X1
+      531   DFF_X1
+      529   INV_X1
+        4   NAND2_X1
+        3   NAND3_X1
+        2   NOR2_X1
+        1   OAI211_X1
+      529   OAI21_X1
+        1   OAI221_X1
+        1   OAI22_X1
+        2   OR3_X1
+        2   OR4_X1
+     1529   XNOR2_X1
+       46   XOR2_X1
+
+=== ucie_flit_tx ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1859 wires
+     8588 wire bits
+      285 public wires
+     7014 public wire bits
+        9 ports
+     1085 port bits
+     1590 cells
+        2   AOI21_X1
+        8   DFF_X1
+       13   INV_X1
+        3   MUX2_X1
+       11   NAND2_X1
+        1   NAND3_X1
+        5   NOR2_X1
+        2   OAI21_X1
+        2   OAI22_X1
+     1286   XNOR2_X1
+      257   XOR2_X1
+
+=== ucie_lane_repair ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      624 wires
+      944 wire bits
+       16 public wires
+      336 public wire bits
+        7 ports
+      139 port bits
+      710 cells
+       19   AND2_X1
+       11   AND3_X1
+        5   AND4_X1
+       19   AOI211_X1
+       48   AOI21_X1
+        5   AOI221_X1
+        9   AOI22_X1
+       39   INV_X1
+       34   MUX2_X1
+      101   NAND2_X1
+       47   NAND3_X1
+       25   NAND4_X1
+      115   NOR2_X1
+       51   NOR3_X1
+       24   NOR4_X1
+       20   OAI211_X1
+       41   OAI21_X1
+        4   OAI221_X1
+        5   OAI22_X1
+        1   OAI33_X1
+       22   OR2_X1
+        4   OR3_X1
+        3   OR4_X1
+       49   XNOR2_X1
+        9   XOR2_X1
+
+=== ucie_ltssm ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      320 wires
+      451 wire bits
+       28 public wires
+      159 public wire bits
+       18 ports
+       83 port bits
+      290 cells
+       28   AND2_X1
+       12   AND3_X1
+        3   AND4_X1
+       10   AOI211_X1
+       24   AOI21_X1
+        1   AOI221_X1
+        1   AOI22_X1
+       41   DFF_X1
+       28   INV_X1
+       23   NAND2_X1
+        6   NAND3_X1
+        8   NAND4_X1
+       30   NOR2_X1
+       33   NOR3_X1
+       13   NOR4_X1
+        2   OAI211_X1
+       17   OAI21_X1
+        1   OAI22_X1
+        1   OAI33_X1
+        1   OR2_X1
+        3   OR3_X1
+        3   OR4_X1
+        1   XNOR2_X1
+
+=== ucie_rdi_rx ===
+
+        +----------Local Count, excluding submodules.
+        | 
+    22716 wires
+    23461 wire bits
+       12 public wires
+      757 public wire bits
+        9 ports
+      716 port bits
+    22160 cells
+     1512   AND2_X1
+      170   AND3_X1
+      109   AND4_X1
+      141   AOI211_X1
+     1226   AOI21_X1
+       34   AOI221_X1
+     2813   AOI22_X1
+     1097   DFF_X1
+      323   INV_X1
+      961   MUX2_X1
+     2403   NAND2_X1
+     1259   NAND3_X1
+      747   NAND4_X1
+     2432   NOR2_X1
+     1106   NOR3_X1
+      708   NOR4_X1
+      145   OAI211_X1
+      892   OAI21_X1
+       36   OAI221_X1
+     3089   OAI22_X1
+      112   OAI33_X1
+      399   OR2_X1
+      173   OR3_X1
+       41   OR4_X1
+      225   XNOR2_X1
+        7   XOR2_X1
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+   189468 ucie_d2d_top
+     7413 $paramod$c1ca8137c612df812efb615ae085819c49b7c6f2\ucie_dll
+    14000   $paramod$070b37ddfaf5658f5645b73613394ec360021e02\ucie_link_retry
+     4247   ucie_flit_rx
+     1590   ucie_flit_tx
+     3646 $paramod\ucie_link_pipe\DATA_GATING=s32'00000000000000000000000000000000
+    11416   $paramod$dbfe390d31b63840811040002731652b93721b2a\ucie_afifo
+    13290   $paramod\ucie_rdi_tx\DATA_GATING=s32'00000000000000000000000000000000
+     5044   ucie_deskew
+    22160   ucie_rdi_rx
+      710 ucie_lane_repair
+      290 ucie_ltssm
+
+        +----------Count including submodules.
+        | 
+   189516 wires
+   292470 wire bits
+     2030 public wires
+   104984 public wire bits
+      342 ports
+    24136 port bits
+        - memories
+        - memory bits
+        - processes
+   189468 cells
+     9345   AND2_X1
+      589   AND3_X1
+      302   AND4_X1
+     1081   AOI211_X1
+     8804   AOI21_X1
+     1744   AOI221_X1
+     4240   AOI222_X1
+    14440   AOI22_X1
+        7   BUF_X1
+    38566   DFF_X1
+     4954   INV_X1
+    33036   MUX2_X1
+     9477   NAND2_X1
+     6078   NAND3_X1
+     2040   NAND4_X1
+    13834   NOR2_X1
+     2731   NOR3_X1
+     1644   NOR4_X1
+     3888   OAI211_X1
+    12052   OAI21_X1
+      602   OAI221_X1
+       10   OAI222_X1
+     8568   OAI22_X1
+      236   OAI33_X1
+     2615   OR2_X1
+      522   OR3_X1
+      144   OR4_X1
+     7074   XNOR2_X1
+      845   XOR2_X1
+        6 submodules
+        2   $paramod$c1ca8137c612df812efb615ae085819c49b7c6f2\ucie_dll
+        2   $paramod\ucie_link_pipe\DATA_GATING=s32'00000000000000000000000000000000
+        1   ucie_lane_repair
+        1   ucie_ltssm
+

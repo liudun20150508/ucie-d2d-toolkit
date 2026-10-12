@@ -1,0 +1,28 @@
+{
+  "design": "ucie_ltssm (扫描网表)",
+  "method": "mux-D scan (Nangate45 DFF_X1 无异步复位 -> 无需复位门控)",
+  "n_dff": 53,
+  "n_dff_original": 41,
+  "n_chain": 4,
+  "chain_lengths": [
+    14,
+    13,
+    13,
+    13
+  ],
+  "max_chain": 14,
+  "min_chain": 13,
+  "n_mux_added": 53,
+  "n_test_points": 12,
+  "test_point_note": "观测点：采样既非 FF-D 也非顶层输出的高扇出内部网（test-only DFF，串入扫描链）",
+  "no_reset_gating_note": "Nangate45 DFF_X1 为纯 D 触发器（CK/D/Q/QN），无异步复位引脚，故原流程的复位门控与复位去耦不需要",
+  "area_overhead_um2": 175.294,
+  "total_area_um2": 441.826,
+  "area_overhead_pct": 39.67,
+  "n_ports_added": 9,
+  "shift_cycles": 14,
+  "cell_areas": {
+    "MUX2_X1": 1.862,
+    "DFF_X1": 4.522
+  }
+}

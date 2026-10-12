@@ -1,0 +1,33 @@
+# Gold reference: RTL -> gate-level ($_*_ cells), mirrors synth up to abc
+# ⚠ 参考脚本：本文件针对**来源示例设计（picorv32）**的 LEC 金标生成，不是 UCIe demo 的一环。
+#   复现需自备 picorv32.v 并把下面的 read_verilog / -top 换成你的 RTL。
+read_liberty -lib ../../resources/sky130/sky130_fd_sc_hd__tt_025C_1v80.partial.lib
+read_verilog picorv32/picorv32.v
+hierarchy -check -top picorv32
+proc
+flatten
+opt_expr
+opt_clean
+check
+opt -nodffe -nosdff
+fsm
+opt
+wreduce
+peepopt
+opt_clean
+alumacc
+share
+opt
+memory -nomap
+opt_clean
+opt -fast -full
+memory_map
+opt -full
+techmap -map +/techmap.v
+opt -fast
+abc
+opt -fast
+# LEC requires both sides mapped to same cell set: map flops to liberty
+# cells too, so gold and gate share identical edfxtp/dfxtp structure
+dfflibmap -liberty ../../resources/sky130/sky130_fd_sc_hd__tt_025C_1v80.partial.lib
+write_verilog /tmp/gold_raw.v

@@ -1,0 +1,11 @@
+# SYN: Yosys logic synthesis to SKY130 (picorv32 RISC-V core)
+# NOTE: do NOT run clean/opt after techmap-to-sky130 - yosys clean misreads
+# liberty cell output ports on techmap-generated instances and deletes
+# driven cells (verified: 111 dangling wires). Synth-internal clean is safe.
+read_liberty -lib ../../resources/sky130/sky130_fd_sc_hd__tt_025C_1v80.partial.lib
+read_verilog picorv32/picorv32.v
+synth -top picorv32 -flatten
+dfflibmap -liberty ../../resources/sky130/sky130_fd_sc_hd__tt_025C_1v80.partial.lib
+techmap -map scripts/sky130_map.v
+write_verilog reports/picorv32_synth.v
+tee -o reports/synth_area.txt stat -liberty ../../resources/sky130/sky130_fd_sc_hd__tt_025C_1v80.partial.lib

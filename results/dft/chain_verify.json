@@ -1,0 +1,10 @@
+{
+  "sim": "yosys sim（liberty 行为模型，80 周期移位）",
+  "result": "PASS",
+  "note": "TB 内置独立参考移位模型（4 条链各自的 LFSR/模式序列），与门级行为仿真逐拍比对",
+  "tail": [
+    "End of script. Logfile hash: 45c1d6e2c2, time: 0.13s, user: 0.13s, system: 0.01s, MEM: 33.20 MB peak",
+    "Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang /usr/bin/c++ 16.0.0.16000026)",
+    "Time spent: 66% 1x sim (0 sec), 17% 2x read_liberty (0 sec), ..."
+  ]
+}

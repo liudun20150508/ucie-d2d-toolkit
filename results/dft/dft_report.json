@@ -1,0 +1,74 @@
+{
+  "scan_ready": {
+    "checks": [
+      {
+        "name": "无三态/inout 端口",
+        "pass": true,
+        "detail": "OK"
+      },
+      {
+        "name": "无门控时钟",
+        "pass": true,
+        "detail": "OK"
+      },
+      {
+        "name": "时序单元时钟均来自时钟端口",
+        "pass": true,
+        "detail": "时钟集合 ['clk', 'lclk', 'rclk', 'rdi_clk', 'wclk']"
+      },
+      {
+        "name": "时序单元全部带异步复位",
+        "pass": true,
+        "detail": "28/28"
+      },
+      {
+        "name": "无 latch 推断",
+        "pass": true,
+        "detail": "OK"
+      },
+      {
+        "name": "无组合环（Verilator -Wall 通过）",
+        "pass": true,
+        "detail": "见 make lint / make test"
+      }
+    ],
+    "verdict": "SCAN-READY"
+  },
+  "scan_chain": {
+    "netlist": "build/syn/ucie_axi_d2d_top_mapped.v",
+    "netlist_exists": true,
+    "error": null,
+    "total_dff": 20992,
+    "dff_types_top": [
+      [
+        "DFF_X1",
+        20992
+      ]
+    ],
+    "chains": 8,
+    "dff_per_chain": 2624,
+    "shift_cycles": 2624,
+    "shift_time_us": 26.24,
+    "scan_ports": 19,
+    "dff_by_rtl_module_approx": {
+      "ucie_afifo": 4,
+      "ucie_link_pipe": 3,
+      "ucie_mgmt": 3,
+      "ucie_rdi": 3,
+      "ucie_dll": 2,
+      "ucie_link_retry": 2,
+      "ucie_deskew": 2,
+      "ucie_crc16": 1,
+      "ucie_flit_rx": 1,
+      "ucie_flit_tx": 1
+    }
+  },
+  "toggle_coverage": {
+    "vcd": "waves/ucie_axi_d2d_top.vcd",
+    "total_signals": 751,
+    "toggled_signals": 751,
+    "coverage_pct": 100.0,
+    "uncovered_top": [],
+    "note": "VCD 只包含仿真中被保留（未被优化掉）的信号；本设计的门级网表统计到 20992 个 DFF，它们的内部状态大多不在 VCD 里。因此该百分比是**可见信号**的翻转率，**不等价于故障覆盖率**。要拿到 DFF 级覆盖率需要门级/网表级仿真波形。"
+  }
+}
