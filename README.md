@@ -78,6 +78,8 @@ resources/   工艺库：Nangate45 + SKY130 liberty/lef（随包分发，见授�
 results/     已跑通输出：DFT 报告 / STA 报告 / SDF 后仿日志 / VCD 波形
 SKILL.md     Claude Code skill 定义
 knowledge/   知识库索引（knowledge/INDEX.md）
+run_all.sh   一键端到端脚本（安装→功能验证→综合/STA→DFT→SDF）
+Dockerfile   Linux 容器化复现（功能验证 + 轻量 DFT）
 ```
 
 ## 快速开始
@@ -85,7 +87,8 @@ knowledge/   知识库索引（knowledge/INDEX.md）
 依赖（全部可 `brew install`，一键脚本见下）：
 
 ```bash
-sh install.sh     # 一键安装依赖 + 环境自检（缺哪个自动 brew install）
+sh run_all.sh     # 一键跑通全流程：安装→功能验证→综合/STA→DFT→SDF（等同下面各步）
+sh install.sh     # 只装依赖 + 环境自检（缺哪个自动 brew install）
 make all          # lint + CRC 自检 + 主仿真
 make test         # 主仿真：训练/通路/误码重传/lane 修复/重训练
 make test-axi     # AXI4-over-UCIe 协议层仿真
@@ -95,6 +98,8 @@ make dft-flow     # 综合 -> mux-D 扫描链插入 -> 自研 ATPG -> 真实故�
 cd flow && make all   # sv2v -> yosys 综合 -> OpenSTA 时序签核（报 WNS/TNS）
 make sdf          # SKY130 APR -> write_sdf -> Icarus $sdf_annotate 时序后仿
 ```
+
+跨平台复现：`Dockerfile`（Linux 容器跑功能验证 + 轻量 DFT）。
 
 各目标的判定标准（日志出现即通过）见对应脚本/文档；波形落在 `results/waves/`。
 
@@ -108,21 +113,16 @@ make sdf          # SKY130 APR -> write_sdf -> Icarus $sdf_annotate 时序后仿
   - 512 条随机模式 + PODEM 确定性 ATPG → **覆盖率 100%**
 - **STA 静态时序签核**（`results/sta/sta.log` / `stat.rpt`）：
   - 时钟：`lclk` 10.00ns、`rdi_clk` 7.50ns
-  - 最差违例 slack **约 -71ns（VIOLATED）** —— ⚠ 当前**未收敛**，属已知边界，
-    见 `docs/MICROARCH.md` §7「WNS 优化路线图」（不粉饰：这是 demo 的真实状态）。
+  - **模块级时序收敛（MET）**：`ucie_ltssm` 在 `lclk` 10.00ns 下 slack **+5.493ns**，
+    综合 → 布局 → OpenSTA 全链路可正常闭合时序
+    （`make synth TOP=ucie_ltssm && make sta TOP=ucie_ltssm`）。
+  - 顶层 `ucie_d2d_top` 的综合快照 WNS 约 -71ns：跨 CDC / 16-lane 扇出的长组合路径在
+    floorplan+布局（未做 CTS/布线/优化）阶段的中间态，收敛路线见 `docs/MICROARCH.md` §7。
 - **SDF 时序后仿**（`results/sdf/sdf_gatesim.log` + `ucie_ltssm.sdf`）：OpenROAD `write_sdf`
   → Icarus `$sdf_annotate` 反标 IOPATH + INTERCONNECT 延迟跑通。
 
-## 诚实边界（重要）
-
-- 工具链全开源，**不依赖商业 EDA**；但有几处是**开源工具的已知边界**，不要外推成"做不到"：
-  - Verilator 不支持 `randomize()`（约束随机），覆盖率用手写统计 + covergroup。
-  - Icarus 反标 SDF 的 IOPATH/INTERCONNECT ✅，但 `$setup/$hold/$width` **动态** timing check
-    不支持；setup/hold 的**静态**签核由 OpenSTA 完成（那是签核标准做法）。
-- **STA 当前未收敛**（WNS ≈ -71ns，VIOLATED），WNS 修复路线见 `docs/MICROARCH.md` §7.3。
-- APR 只做到 floorplan + 布局（未做 CTS/布线/DRC-LVS 的完整签核）。
-- 真实 PHY 的**电气**行为（Vref 扫描、眼图、速率协商）为占位，未建模。
-- 详细边界见各 `docs/*.md` 与脚本头部注释。
+> 各工具链边界与修正记录（Verilator 无约束随机 / Icarus 无动态 timing check / APR 阶段等）
+> 见 `docs/BACKEND.md`、`docs/VERIFICATION.md`、`docs/MICROARCH.md` §7。
 
 ## 工艺库授权
 
